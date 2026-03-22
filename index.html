@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nicole Kenttä Beauty — Sobrancelhas & Pestanas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-pale: #F5EDD6;
+      --beige: #F0E8D8;
+      --beige-dark: #D9C9A8;
+      --white: #FDFAF5;
+      --ink: #2A2118;
+      --ink-soft: #6B5B45;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 20px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(253,250,245,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em;
+      color: var(--gold); text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px 80px 80px;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.7;
+      color: var(--ink-soft); max-width: 400px; margin-bottom: 48px;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--gold); color: var(--white);
+      padding: 16px 36px; font-size: 0.78rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; font-family: 'Jost', sans-serif;
+      transition: background .3s, transform .2s;
+      width: fit-content;
+    }
+    .btn-primary:hover { background: #a8872e; transform: translateY(-1px); }
+    .btn-primary svg { transition: transform .3s; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .hero-right {
+      position: relative; background: var(--beige);
+      overflow: hidden;
+    }
+    .hero-img-wrapper {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-decorative {
+      width: 75%; aspect-ratio: 3/4;
+      background: linear-gradient(160deg, var(--gold-pale) 0%, var(--beige-dark) 100%);
+      position: relative; overflow: hidden;
+    }
+    /* Eye SVG illustration */
+    .hero-eye-art {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ornament-top {
+      position: absolute; top: 32px; right: 32px;
+      width: 80px; height: 80px; border: 1px solid rgba(201,168,76,0.4);
+      transform: rotate(45deg);
+    }
+    .ornament-bottom {
+      position: absolute; bottom: 32px; left: 32px;
+      width: 50px; height: 50px; border: 1px solid rgba(201,168,76,0.4);
+      transform: rotate(45deg);
+    }
+    .hero-badge {
+      position: absolute; bottom: -24px; left: -24px;
+      width: 120px; height: 120px;
+      background: var(--gold); border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--white); text-align: center;
+    }
+    .hero-badge span:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 400; line-height: 1;
+    }
+    .hero-badge span:last-child {
+      font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .hero-vertical-text {
+      position: absolute; right: 24px; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); white-space: nowrap;
+    }
+
+    /* scroll fade in */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; gap: 20px;
+      padding: 0 80px; margin: 0 auto;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--beige-dark); }
+    .divider-icon { color: var(--gold); font-size: 1.2rem; }
+
+    /* ── SERVICES ── */
+    .section { padding: 100px 80px; }
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--ink); margin-bottom: 60px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--beige-dark);
+    }
+    .service-card {
+      background: var(--white);
+      padding: 48px 40px;
+      transition: background .3s;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold);
+      transition: width .4s ease;
+    }
+    .service-card:hover { background: var(--gold-pale); }
+    .service-card:hover::after { width: 100%; }
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300; line-height: 1;
+      color: var(--beige-dark); margin-bottom: 24px;
+      transition: color .3s;
+    }
+    .service-card:hover .service-number { color: var(--gold-light); }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .service-desc {
+      font-size: 0.88rem; font-weight: 300; line-height: 1.7;
+      color: var(--ink-soft); flex: 1;
+    }
+    .service-price {
+      margin-top: 24px; font-size: 0.78rem;
+      letter-spacing: 0.12em; color: var(--gold); font-weight: 500;
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 100px 80px;
+      background: var(--beige);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-img-block {
+      position: relative; aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--beige-dark) 100%);
+    }
+    .about-img-frame {
+      position: absolute; inset: 20px;
+      border: 1px solid rgba(201,168,76,0.5);
+    }
+    .about-img-corner {
+      position: absolute; bottom: -16px; right: -16px;
+      width: 80px; height: 80px;
+      background: var(--gold-pale); border: 1px solid var(--gold);
+    }
+    .about-img-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-text p {
+      font-size: 0.95rem; font-weight: 300; line-height: 1.85;
+      color: var(--ink-soft); margin-bottom: 20px;
+    }
+    .about-stats {
+      display: flex; gap: 40px; margin-top: 40px; padding-top: 40px;
+      border-top: 1px solid var(--beige-dark);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-soft); margin-top: 4px;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--ink);
+      padding: 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px;
+    }
+    .cta-band-left { }
+    .cta-band-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300; color: var(--white); line-height: 1.15;
+    }
+    .cta-band-title em { font-style: italic; color: var(--gold); }
+    .cta-band-sub {
+      font-size: 0.9rem; font-weight: 300; color: rgba(253,250,245,0.6);
+      margin-top: 12px;
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 12px;
+      border: 1px solid var(--gold); color: var(--gold);
+      padding: 16px 36px; font-size: 0.78rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; font-family: 'Jost', sans-serif;
+      transition: background .3s, color .3s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--ink); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 100px 80px; background: var(--white); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+      margin-top: 0; align-items: stretch;
+    }
+    .testimonial-card {
+      padding: 40px 36px; border: 1px solid var(--beige-dark);
+      position: relative; display: flex; flex-direction: column;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 300; color: var(--gold-light);
+      position: absolute; top: 12px; left: 24px; line-height: 1;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-style: italic; font-weight: 300;
+      line-height: 1.65; color: var(--ink); margin-bottom: 24px;
+      padding-top: 24px; flex: 1;
+    }
+    .testimonial-author {
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-top: auto;
+    }
+    .stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 12px; font-size: 0.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 60px 80px 40px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 300; color: var(--gold);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .footer-tagline {
+      font-size: 0.78rem; font-weight: 300; color: rgba(253,250,245,0.4);
+      letter-spacing: 0.1em; margin-top: 6px;
+    }
+    .footer-socials { display: flex; gap: 16px; align-items: center; }
+    .social-link {
+      width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); text-decoration: none;
+      transition: background .3s, border-color .3s;
+    }
+    .social-link:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .footer-bottom {
+      padding-top: 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.75rem; color: rgba(253,250,245,0.3); font-weight: 300;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(253,250,245,0.4); text-decoration: none;
+      transition: color .3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 24px 40px; }
+      .hero-right { height: 340px; }
+      .hero-decorative { width: 90%; }
+      .section { padding: 64px 24px; }
+      .about-section { padding: 64px 24px; grid-template-columns: 1fr; }
+      .about-img-block { aspect-ratio: 3/2; }
+      .services-grid { grid-template-columns: 1fr; }
+      .cta-band { flex-direction: column; padding: 60px 24px; text-align: center; }
+      .testimonials { padding: 64px 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      footer { padding: 48px 24px 32px; }
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .divider { padding: 0 24px; }
+    }
+
+    /* entrance animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > * {
+      animation: fadeSlideUp .9s ease both;
+    }
+    .hero-left > *:nth-child(1) { animation-delay: .1s; }
+    .hero-left > *:nth-child(2) { animation-delay: .25s; }
+    .hero-left > *:nth-child(3) { animation-delay: .4s; }
+    .hero-left > *:nth-child(4) { animation-delay: .55s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Nicole Kenttä Beauty</div>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#testemunhos">Testemunhos</a></li>
+      <li><a href="#agendar">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Sobrancelhas &amp; Pestanas</div>
+      <h1 class="hero-title">
+        Cuidado de alto padrão<br>
+        para o seu <em>olhar.</em>
+      </h1>
+      <p class="hero-sub">
+        Procedimentos especializados para sobrancelhas e pestanas com técnicas premium. Cada traço, cada fio pensados para si.
+      </p>
+      <a href="https://wa.me/351964530673" class="btn-primary">
+        Agendar Agora
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrapper">
+        <div class="hero-decorative">
+          <div class="ornament-top"></div>
+          <div class="ornament-bottom"></div>
+          <div class="hero-eye-art">
+            <svg width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Eye shape -->
+              <path d="M10 70 Q55 10 110 10 Q165 10 210 70 Q165 130 110 130 Q55 130 10 70Z" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.06)"/>
+              <!-- Iris -->
+              <circle cx="110" cy="70" r="28" stroke="#C9A84C" stroke-width="1.2" fill="rgba(201,168,76,0.1)"/>
+              <circle cx="110" cy="70" r="16" stroke="#C9A84C" stroke-width="1" fill="rgba(201,168,76,0.15)"/>
+              <circle cx="110" cy="70" r="6" fill="#C9A84C" opacity=".5"/>
+              <!-- Lashes top -->
+              <line x1="75" y1="22" x2="68" y2="8" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="90" y1="14" x2="87" y2="1" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="108" y1="10" x2="108" y2="-3" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="126" y1="13" x2="129" y2="1" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="142" y1="20" x2="148" y2="7" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="60" y1="33" x2="50" y2="21" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round" opacity=".7"/>
+              <line x1="157" y1="32" x2="167" y2="20" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round" opacity=".7"/>
+              <!-- Brow arch -->
+              <path d="M50 28 Q110 -8 170 28" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- Shine dot -->
+              <circle cx="100" cy="62" r="4" fill="white" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="hero-badge">
+            <span>5★</span>
+            <span>Avaliação</span>
+          </div>
+        </div>
+        <div class="hero-vertical-text">Beauty · Precision · Art</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider" style="padding: 40px 80px;">
+    <div class="divider-line"></div>
+    <span class="divider-icon">◆</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="servicos">
+    <div class="section-label">O que ofereço</div>
+    <h2 class="section-title">Serviços <em>especializados</em></h2>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-number">01</div>
+        <div class="service-name">Design de Sobrancelhas</div>
+        <p class="service-desc">Mapeamento facial e design personalizado para realçar a harmonia do teu rosto.</p>
+        <div class="service-price">A partir de 11,50€</div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">02</div>
+        <div class="service-name">Micropigmentação</div>
+        <p class="service-desc">Técnica semi-permanente, com objetivo de realçar tuas sobrancelhas, respeitando a tua estrutura natural.</p>
+        <div class="service-price">120€</div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">03</div>
+        <div class="service-name">Brow Lamination</div>
+        <p class="service-desc">Alinha, define e fija os fios para uma sobrancelha volumosa e impecável. Resultado durável até 8 semanas.</p>
+        <div class="service-price">A partir de 28€</div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">04</div>
+        <div class="service-name">Extensão de Pestanas</div>
+        <p class="service-desc">Aplicação fio a fio para pestanas dramáticas e naturais, personalizado ao teu estilo e formato de olho.</p>
+        <div class="service-price">A partir de 30€</div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">05</div>
+        <div class="service-name">Lash Lifting</div>
+        <p class="service-desc">Levantamento e curvatura das pestanas naturais para um olhar aberto e definido, sem necessidade de extensões.</p>
+        <div class="service-price">28€</div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-number">06</div>
+        <div class="service-name">Formação</div>
+        <p class="service-desc">Aprende as técnicas de Design de Sobrancelhas com Henna e Brow Lamination num curso prático e completo, pensado para quem quer iniciar ou evoluir na área.</p>
+        <div class="service-price">350€</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="sobre">
+    <div class="about-img-block fade-up">
+      <div class="about-img-frame"></div>
+      <div class="about-img-inner">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+          <circle cx="80" cy="80" r="60" stroke="#C9A84C" stroke-width="1" opacity=".4"/>
+          <circle cx="80" cy="80" r="40" stroke="#C9A84C" stroke-width="1" opacity=".3"/>
+          <path d="M40 80 Q80 30 120 80 Q80 130 40 80Z" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/>
+          <circle cx="80" cy="80" r="12" stroke="#C9A84C" stroke-width="1.2" fill="rgba(201,168,76,0.2)"/>
+          <text x="80" y="148" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="#C9A84C" letter-spacing="2">NICOLE KENTTÄ BEAUTY</text>
+        </svg>
+      </div>
+      <div class="about-img-corner"></div>
+    </div>
+    <div class="about-text fade-up">
+      <div class="section-label">Sobre mim</div>
+      <h2 class="section-title" style="margin-bottom: 24px;">Uma <em>paixão</em><br>por cada detalhe</h2>
+      <p>Sou esteticista especializada em sobrancelhas e pestanas, com 4 anos de experiência e formação contínua nas mais recentes técnicas do setor.</p>
+      <p>O meu objetivo é realçar a tua beleza natural, respeitando as características únicas do teu rosto e o teu estilo de vida.</p>
+      <p>Trabalho em estúdio, num ambiente acolhedor e exclusivo, onde cada cliente recebe atenção total e personalizada.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">5000+</div>
+          <div class="stat-label">Atendimentos realizados</div>
+        </div>
+        <div>
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Avaliação Google</div>
+        </div>
+        <div>
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Anos de experiência</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band" id="agendar">
+    <div class="cta-band-left">
+      <h2 class="cta-band-title">Pronta para <em>transformar</em><br>o teu olhar?</h2>
+      <p class="cta-band-sub">Agenda a tua consulta e descobre o tratamento ideal para ti.</p>
+    </div>
+    <a href="https://wa.me/351964530673" class="btn-outline" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Agendar Agora
+    </a>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testemunhos">
+    <div class="section-label">Testemunhos</div>
+    <h2 class="section-title" style="margin-bottom: 48px;">O que dizem<br><em>as minhas clientes</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Adorei! Atendimento impecável, foi super rápida e deixou do jeito que eu pedi. Com certeza volto mais vezes!</p>
+        <div class="testimonial-author">— Ana Julia Vitali</div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Excelente profissional desde o atendimento até ao resultado final que entrega! Sempre muito simpática e atenciosa em todos os atendimentos. Recomendo 100%</p>
+        <div class="testimonial-author">— Marcela Pereira</div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Fui lá para fazer extensão de cílios e o resultado foi simplesmente magnífico. Não hesitei em marcar outra consulta antes de voltar para a França.</p>
+        <div class="testimonial-author">— Fátima de Almeida</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Nicole Kenttä Beauty</div>
+        <div class="footer-tagline">Sobrancelhas &amp; Pestanas</div>
+      </div>
+      <div class="footer-socials">
+        <!-- Instagram -->
+        <a href="https://instagram.com/niicolekenttabeauty" class="social-link" target="_blank" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/351964530673" class="social-link" target="_blank" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12a9 9 0 01-9 9 8.97 8.97 0 01-4.72-1.33L3 21l1.36-4.15A8.97 8.97 0 013 12a9 9 0 019-9 9 9 0 019 9z"/>
+            <path d="M9.5 9c0-.28.22-.5.5-.5h.5c.28 0 .5.22.5.5v.5c0 .83.5 1.5 1 2l.5.5c.5.5 1.17 1 2 1h.5c.28 0 .5.22.5.5v.5c0 .28-.22.5-.5.5C12.5 15 9 12.5 9.5 9z" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Nicole Kenttä Beauty. Todos os direitos reservados.</div>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos</a>
+        <a href="https://wa.me/351964530673" target="_blank">Agendar</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
